@@ -10,13 +10,7 @@ LIST_EXCLUSION = ['__pycache__', 'file_ext.py', 'cleaner.py']
 def main(dir_path = os.path.dirname(os.path.realpath(__file__))):
     """Execute all the functions."""
     names_list = getFilesFoldersList(dir_path)
-    createFolders(dir_path)
-    moveFilesFolders(names_list)
-
-def createFolders(path):
-    """Create all the folders needed if they don't already exist."""
-    for folder_name in file_ext.EXT:
-        Path(path + "/" + folder_name).mkdir(parents=True, exist_ok=True)
+    moveFilesFolders(names_list, dir_path)
 
 def getFilesFoldersList(path):
     """Return a list of string with all the names of files and folders in the target directory."""
@@ -28,7 +22,7 @@ def getFilesFoldersList(path):
 
     return names_list
 
-def moveFilesFolders(names_list):
+def moveFilesFolders(names_list, dir_path):
     """Move all the files and folders listed in the target directory to their new folder according to their type/extension."""
     moved_list = []
     moved = False # Bool used to stop loop if the file was moved (in order to avoid useless loops)
@@ -37,7 +31,7 @@ def moveFilesFolders(names_list):
             if ext_list != []:
                 for ext in ext_list:
                     if name.endswith(ext):
-                        print("name =", name)
+                        Path(dir_path + "/" + folder).mkdir(parents=True, exist_ok=True)
                         shutil.move(name, './' + folder + '/' + name)
                         moved_list.append(name)
                         moved = True
@@ -48,6 +42,8 @@ def moveFilesFolders(names_list):
 
     unmoved_list= [x for x in names_list if x not in moved_list] #list of unmoved files/folders
 
+    # Handling files without extensions or folders
+    Path(dir_path + "/OTHERS").mkdir(parents=True, exist_ok=True)
     for name in unmoved_list: # move all files without extension or folder to the OTHERS folder
         shutil.move(name, './OTHERS/' + name)
 

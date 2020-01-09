@@ -57,7 +57,8 @@ EXT_IMAGE = [
     '.svg', 
     '.tif', 
     '.tiff', 
-    '.CR2'
+    '.CR2',
+    '.PNG'
     ]
 
 EXT_INTERNET = [

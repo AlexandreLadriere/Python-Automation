@@ -202,5 +202,5 @@ EXT = {
     'PROG': EXT_PROG, 
     'SHEETS': EXT_SHEETS, 
     'SYS': EXT_SYS,
-    'OTERS': []
+    'OTHERS': []
     }

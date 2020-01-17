@@ -160,7 +160,8 @@ EXT_PROG = [
     '.js',
     '.ts',
     '.pl',
-    '.r'
+    '.r',
+    '.m'
     ]
 
 EXT_SHEETS = [

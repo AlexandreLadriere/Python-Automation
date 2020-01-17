@@ -32,7 +32,7 @@ def moveFilesFolders(names_list, dir_path):
                 for ext in ext_list:
                     if name.endswith(ext):
                         Path(dir_path + "/" + folder).mkdir(parents=True, exist_ok=True)
-                        shutil.move(name, './' + folder + '/' + name)
+                        shutil.move(dir_path + '/' + name, dir_path + '/' + folder + '/' + name)
                         moved_list.append(name)
                         moved = True
                         break # stop the "for ext in ext_list" loop
@@ -45,7 +45,7 @@ def moveFilesFolders(names_list, dir_path):
     # Handling files without extensions or folders
     Path(dir_path + "/OTHERS").mkdir(parents=True, exist_ok=True)
     for name in unmoved_list: # move all files without extension or folder to the OTHERS folder
-        shutil.move(name, './OTHERS/' + name)
+        shutil.move(dir_path + '/' + name, dir_path + '/OTHERS/' + name)
 
 if __name__ == "__main__":
     loop = True

@@ -39,6 +39,9 @@ To use the script:
 $ python3 <path_to_script> #It will run the script, then follow instructions
 ```
 
+### Columns Extractor
+This script will extract specified columns from a given text file.
+
 ## License
 This project is licensed under the MIT License - see the [LICENSE] file for details.
 
